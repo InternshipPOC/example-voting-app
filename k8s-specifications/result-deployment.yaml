@@ -15,7 +15,7 @@ spec:
         app: result
     spec:
       containers:
-      - image: ghcr.io/InternshipPOC/example-voting-app/result
+      - image: ghcr.io/internshippoc/example-voting-app/result
         name: result
         ports:
         - containerPort: 80

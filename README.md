@@ -1,6 +1,7 @@
 
 
 
+[labbito.drawio.png]()
 ## Code secret for kubectl for deployement
 
 ```bash
@@ -10,4 +11,3 @@ kubectl create secret docker-registry ghcr-secret \
   --docker-password=\
   --docker-email=
 ```
-

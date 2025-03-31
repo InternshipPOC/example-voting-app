@@ -1,7 +1,7 @@
 
 
 
-[labbito.drawio.png]()
+[Structure of project](labbito.drawio.png)
 ## Code secret for kubectl for deployement
 
 ```bash

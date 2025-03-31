@@ -31,28 +31,16 @@ jobs:
       pull-requests: write # needed to create and update comments in PRs
     
     secrets:
-
-      # Only needed if with:dockerhub-enable is true below
-      dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-
-      # Only needed if with:dockerhub-enable is true below
-      dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }} 
 
     with:
-      
-      ### REQUIRED
-      ### ENABLE ONE OR BOTH REGISTRIES
-      ### tell docker where to push.
-      ### NOTE if Docker Hub is set to true, you must set secrets above and also add account/repo/tags below
-      dockerhub-enable: true
       ghcr-enable: true
 
       ### REQUIRED 
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        ghcr.io/dockersamples/example-voting-app-result
-        dockersamples/examplevotingapp_result
+        ghcr.io/InternshipPOC/example-voting-app/
       
       ### REQUIRED set rules for tagging images, based on special action syntax:
       ### https://github.com/docker/metadata-action#tags-input

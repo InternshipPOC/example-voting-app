@@ -31,34 +31,24 @@ jobs:
       pull-requests: write # needed to create and update comments in PRs
     
     secrets:
-
-      # Only needed if with:dockerhub-enable is true below
-      dockerhub-username: ${{ secrets.DOCKERHUB_USERNAME }}
-
-      # Only needed if with:dockerhub-enable is true below
-      dockerhub-token: ${{ secrets.DOCKERHUB_TOKEN }}
+      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }} 
 
     with:
-      
-      ### REQUIRED
-      ### ENABLE ONE OR BOTH REGISTRIES
-      ### tell docker where to push.
-      ### NOTE if Docker Hub is set to true, you must set secrets above and also add account/repo/tags below
-      dockerhub-enable: true
       ghcr-enable: true
 
       ### REQUIRED 
       ### A list of the account/repo names for docker build. List should match what's enabled above
       ### defaults to:
       image-names: |
-        ghcr.io/dockersamples/example-voting-app-worker
-        dockersamples/examplevotingapp_worker
+        ghcr.io/InternshipPOC/example-voting-app/
       
       ### REQUIRED set rules for tagging images, based on special action syntax:
       ### https://github.com/docker/metadata-action#tags-input
       ### defaults to:
       tag-rules: |
         type=raw,value=latest,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
+        type=raw,value=before,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
+        type=raw,value=after,enable=${{ endsWith(github.ref, github.event.repository.default_branch) }}
         type=ref,event=pr
       
       ### path to where docker should copy files into image
@@ -73,8 +63,6 @@ jobs:
       
       ### platforms to build for, defaults to linux/amd64
       ### other options: linux/amd64,linux/arm64,linux/arm/v7
-      # FIXME worker arm/v7 support doesn't build in .net core 3.1 with QEMU
-      # a fix would likely run the .net build on amd64 but with a target of arm/v7
       platforms: linux/amd64,linux/arm64,linux/arm/v7
       
       ### Create a PR comment with image tags and labels

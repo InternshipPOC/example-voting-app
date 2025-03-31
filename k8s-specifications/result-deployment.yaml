@@ -15,8 +15,10 @@ spec:
         app: result
     spec:
       containers:
-      - image: dockersamples/examplevotingapp_result
+      - image: ghcr.io/InternshipPOC/example-voting-app/result:latest
         name: result
         ports:
         - containerPort: 80
           name: result
+      imagePullSecrets:
+      - name: ghcr-secret

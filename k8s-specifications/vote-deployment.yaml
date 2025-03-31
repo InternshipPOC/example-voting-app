@@ -15,7 +15,7 @@ spec:
         app: vote
     spec:
       containers:
-      - image: ghcr.io/InternshipPOC/example-voting-app/vote:latest
+      - image: ghcr.io/InternshipPOC/example-voting-app/vote
         name: vote
         ports:
         - containerPort: 80

@@ -31,7 +31,7 @@ jobs:
       pull-requests: write # needed to create and update comments in PRs
     
     secrets:
-      GHCR_TOKEN: ${{ secrets.GHCR_TOKEN }} 
+      dockerhub-token: ${{ secrets.GHCR_TOKEN }} 
 
     with:
       ghcr-enable: true

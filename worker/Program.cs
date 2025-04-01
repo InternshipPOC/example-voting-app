@@ -78,14 +78,14 @@ namespace Worker
                     connection.Open();
                     break;
                 }
-                catch (SocketException)
+                catch (Exception ex)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine($"Waiting for db  {ex.Message}");
                     Thread.Sleep(1000);
                 }
-                catch (DbException)
+                catch (Exception ex)
                 {
-                    Console.Error.WriteLine("Waiting for db");
+                    Console.Error.WriteLine($"Waiting for db  {ex.Message}");
                     Thread.Sleep(1000);
                 }
             }
